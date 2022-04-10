@@ -2,6 +2,7 @@ import os
 from distutils.dir_util import copy_tree
 from shutil import copyfile
 import tarfile
+import glob
 
 filePath = os.path.dirname(__file__)
 newFilePath = filePath + "/dir1/dir2"
@@ -26,6 +27,21 @@ newFilePath = filePath + "/dir1/dir2"
 # print(contens)
 
 #  eg6 创建压缩文件
-with tarfile.open(newFilePath + "/test_tar.rar", "a") as testTar:
-    testTar.add(newFilePath, arcname=os.path.basename(newFilePath))
-testTar.close()
+# with tarfile.open(newFilePath + "/test_tar.rar", "a") as testTar:
+#     testTar.add(newFilePath, arcname=os.path.basename(newFilePath))
+# testTar.close()
+
+#  eg7 查找所有图片并存放到压缩包
+# textureDir = "/texture dir"
+# exportDir = "/export dir"
+#
+# tifs = []
+# for x in os.walk(textureDir):
+#     for y in glob.glob(os.path.join(x[0], "*.tif")):
+#         tifs.append(y)
+#
+# if tifs:
+#     with tarfile.open(exportDir + "/textures_tar.rar", "w:rar") as tar:
+#         for tif in tifs:
+#             tar.add(tif, arcname=os.path.basename(tif))
+#     tar.close()
