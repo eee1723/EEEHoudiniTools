@@ -45,3 +45,14 @@ newFilePath = filePath + "/dir1/dir2"
 #         for tif in tifs:
 #             tar.add(tif, arcname=os.path.basename(tif))
 #     tar.close()
+
+
+def getTypeOfFiles(DestinationDir, TypeOfFile):
+    files = []
+
+    for i in os.walk(DestinationDir):
+        for j in glob.glob(os.path.join(i[0], "*.%s" % TypeOfFile)):
+            files.append(j)
+    return files
+
+
